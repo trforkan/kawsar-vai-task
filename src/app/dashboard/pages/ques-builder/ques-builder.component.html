@@ -1,0 +1,87 @@
+<div class="container">
+  <h2 class="container__title">Add Form</h2>
+
+  <div class="container__form">
+
+    <form action="" class="container__form__box" [formGroup]="questionForm" (ngSubmit)="display()">
+
+      <div class="title-description">
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Title</mat-label>
+          <input formControlName="title" type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Description</mat-label>
+          <input formControlName="description" type="text" matInput>
+        </mat-form-field>
+
+      </div>
+
+      <div class="title-description questions" formArrayName="questions" *ngFor="let item of questions.controls; index as idx">
+
+
+        <ng-container [formGroupName]="idx">
+
+
+          <ng-container >
+
+
+            <div class="question" >
+
+              <mat-form-field class="question-details">
+                <mat-label>Question</mat-label>
+                <input formControlName="question" type="text" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Question Type</mat-label>
+                <mat-select [(value)]="selected" formControlName="quesType">
+                  <mat-option *ngFor="let quesType of quesTypes" [value]="quesType" >
+                    {{quesType}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <div class="answers" formArrayName="options">
+
+              <div class="answer-box" *ngFor="let item of options.controls; index as i">
+
+                <!-- <mat-icon class="answer-line-icon">check_box_outline_blank</mat-icon> -->
+                <mat-form-field class="answer-field">
+                  <mat-label>Answer</mat-label>
+                  <input [formControlName]="i" type="text" matInput>
+                </mat-form-field>
+
+              </div>
+
+              <div class="add-ques-button">
+                <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
+              </div>
+
+              <div class="add-option" (click)="addOptions()">
+                <mat-icon class="add-option-line">check_box_outline_blank</mat-icon>
+                <span>Add Options</span>
+              </div>
+
+            </div>
+
+          </ng-container>
+
+        </ng-container>
+
+
+
+      </div>
+
+
+      <button mat-icon-button type="submit">+</button>
+
+    </form>
+
+  </div>
+
+</div>

@@ -1,0 +1,124 @@
+
+.container {
+  height: 100%;
+
+  &__sidenav {
+
+    // border: 1px solid black;
+    width: 20%;
+    height: 100%;
+    background-color: #FFFFFF;
+    // border: 1px solid black;
+
+    &__header {
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      height: 60px;
+
+      &__button {
+        margin-left: 20px;
+      }
+
+      &__list {
+        list-style: none;
+        padding-left: 15px;
+        &__element {
+          // width: 100%;
+          padding-left: 0px;
+          &__box {
+
+            // border: 1px solid red;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            margin: auto;
+            list-style: none;
+            &__icon {
+              margin: auto;
+              width: 38px;;
+              height: 38px;
+              border-radius: 50%;
+              display: flex;
+              // border: 1px solid black;
+              background-color: #3498DB;
+              margin-right: 5px;
+              &__bold {
+                // font-weight: 50;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
+                color: white;
+              }
+
+            }
+            h4 {
+              margin: auto;
+              // border: 1px solid black;
+            }
+
+
+          }
+        }
+      }
+    }
+
+    &__toggle-group {
+      width: 100%;
+      // margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      border: none;
+      margin-top: 15px;
+      border-radius: 0;
+
+      .button-toggle {
+        // border: 1px solid black;
+        margin: 0px;
+        height: 40px;
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+
+
+        // background-color: #005BA9;
+        // color: white;
+
+        display: flex;
+        align-items: center;
+
+      }
+
+
+      .mat-button-toggle-checked {
+        background-color: #005BA9;
+        color: white;
+      }
+
+      &__list {
+        list-style: none;
+        width: 100%;
+        padding-left: 0;
+        &__button {
+
+          margin-bottom: 5px;
+          display: flex;
+          flex-direction: column;
+
+
+        }
+      }
+    }
+
+  }
+
+  &__sidenav-content {
+    &__header {
+      height: 60px;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+}

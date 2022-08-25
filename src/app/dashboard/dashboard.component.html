@@ -1,0 +1,70 @@
+
+
+ <mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side"  class="container__sidenav" opened>
+
+    <header class="container__sidenav__header">
+
+      <ul class="container__sidenav__header__list" [matMenuTriggerFor]="menu" >
+
+        <li class="container__sidenav__header__list__element">
+          <div class="container__sidenav__header__list__element__box">
+            <h2 class="container__sidenav__header__list__element__box__icon">
+              <b class="container__sidenav__header__list__element__box__icon__bold">S</b>
+            </h2>
+            <h4>Systemadmin</h4>
+            <mat-icon>expand_more</mat-icon>
+          </div>
+        </li>
+      </ul>
+
+      <button  class="container__sidenav__header__button" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+
+        <button mat-menu-item>
+          <mat-icon>users</mat-icon>
+          <span>My Account</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>voicemail</mat-icon>
+          <span>About</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+
+      </mat-menu>
+
+
+    </header>
+
+    <mat-button-toggle-group class="container__sidenav__toggle-group">
+
+      <div *ngFor="let item of toggleButtons">
+
+        <mat-button-toggle class="button-toggle" (change)="routePage(item)" >{{item}}</mat-button-toggle>
+      </div>
+
+    </mat-button-toggle-group>
+
+  </mat-sidenav>
+  <!-- <mat-sidenav position="end">End</mat-sidenav> -->
+  <mat-sidenav-content class="container__sidenav-content">
+    <header class="container__sidenav-content__header">
+      <button type="button"  class="container__sidenav__header__button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </header>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

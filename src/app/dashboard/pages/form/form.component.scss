@@ -1,0 +1,47 @@
+
+
+.container {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+
+
+
+  &__title {
+    margin-bottom: 0%;
+    // border: 1px solid red;
+  }
+
+  &__searchbar {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+
+    // border: 1px solid black;
+
+    &__searchbox {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      // border: 1px solid red;
+    }
+
+    &__button {
+      margin-top: 5px;
+      width: 150px;
+      height: 40px;
+      background-color: #0656D3;
+      color: white;
+    }
+
+  }
+  &__table-data {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid red;
+    font-size: smaller;
+  }
+
+
+}

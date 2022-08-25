@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="container__left">
+    <img src="assets/acp_landing_page.png" alt="" class="container__left__background">
+    <div class="container__left__items">
+      <img src="assets/acp_logo_v2.png" alt="" class="container__left__items__item">
+      <h2 class="container__left__items__item">Auditing and Certification Platform</h2>
+      <span class="container__left__items__item">Standardization & Innovation Brought to Auditing, Certification & Inspection Bodies Worldwide</span>
+    </div>
+  </div>
+
+  <div class="container__right">
+    <div class="container__right__items">
+      <img src="assets/ACP_Logo.png" alt="" class="container__right__items__logo">
+      <h2 class="container__right__items__title">LOGIN</h2>
+
+      <form  class="container__right__items__form" (ngSubmit)="displayData()"  [formGroup]="loginInput">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <a class="container__right__items__form__forgot-attribute" href="#">Forgot Password?</a>
+
+        <button type="submit" mat-stroked-button class="container__right__items__form__login-button">LOGIN</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>

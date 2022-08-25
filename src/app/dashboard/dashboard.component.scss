@@ -118,7 +118,24 @@
       height: 60px;
       border-bottom: 1px solid #EEEEEE;
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      .nav-logo {
+
+        display: flex;
+        align-items: center;
+        // width: 200px;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        height: 100%;
+        border-left: 1px solid #E0E0E0;
+        img {
+          display: flex;
+          width: 80px;
+          height: 30px;
+        }
+      }
     }
   }
 

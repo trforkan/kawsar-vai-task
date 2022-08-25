@@ -1,5 +1,8 @@
 .container {
-  margin: 15px;
+  height: 89vh;
+  position: sticky;
+  overflow-y: scroll;
+  padding: 15px;
   background-color: #F2F2F2;
 
   &__form {
@@ -25,6 +28,7 @@
 
       .questions {
 
+        border-left: 3px solid #FEC44D;
         .question {
           display: flex;
           justify-content: space-between;
@@ -35,7 +39,7 @@
         }
 
         .answers {
-          // border: 1px solid black;
+          // border-left: 1px solid black;
           display: flex;
           flex-direction: column;
           // align-items: center;

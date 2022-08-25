@@ -1,6 +1,7 @@
 
 .container {
   height: 100%;
+  background-color: #FFFFFF;
 
   &__sidenav {
 
@@ -11,7 +12,7 @@
     // border: 1px solid black;
 
     &__header {
-      border: 1px solid black;
+      border-bottom: 1px solid #EEEEEE;
       display: flex;
       align-items: center;
       height: 60px;
@@ -115,7 +116,7 @@
   &__sidenav-content {
     &__header {
       height: 60px;
-      border: 1px solid black;
+      border-bottom: 1px solid #EEEEEE;
       display: flex;
       align-items: center;
     }

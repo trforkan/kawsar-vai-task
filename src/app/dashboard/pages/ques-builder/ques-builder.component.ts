@@ -1,3 +1,4 @@
+import { checkboxQuestion } from './../../../models/model';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -36,6 +37,10 @@ export class QuesBuilderComponent implements OnInit {
     ])
   });
 
+  // checkboxQuestions = new FormArray([
+  //   checkboxQuestion
+  // ])
+
 
   // questionForm = new FormGroup({
   //   title: new FormControl(""),
@@ -65,15 +70,17 @@ export class QuesBuilderComponent implements OnInit {
   }
 
   get options() {
-    return this.checkboxQuestions.controls['options'] as FormArray;
+    // return this.checkboxQuestions.controls['options'] as FormArray;
+    return this.questionForm.controls['questions'].controls[0].controls['options'] as FormArray;
   }
 
   display() {
     console.log(this.questionForm.value);
   }
 
-  addOptions() {
-    (<FormArray>this.checkboxQuestions.controls['options']).push(new FormControl(""));
+  addOptions(idx: number) {
+    // (<FormArray>this.checkboxQuestions.controls['options']).push(new FormControl(""));
+    (<FormArray>this.questionForm.controls['questions'].controls[idx].controls['options']).push(new FormControl(""));
   }
 
   get questions() {

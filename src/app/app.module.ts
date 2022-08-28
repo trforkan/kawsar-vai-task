@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormComponent } from './dashboard/pages/form/form.component';
 import { QuesBuilderComponent } from './dashboard/pages/ques-builder/ques-builder.component';
+import { UserComponent } from './dashboard/pages/user/user.component';
+import { AddUserComponent } from './dashboard/pages/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { QuesBuilderComponent } from './dashboard/pages/ques-builder/ques-builde
     LoginPortalComponent,
     DashboardComponent,
     FormComponent,
-    QuesBuilderComponent
+    QuesBuilderComponent,
+    UserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,132 @@
+.container {
+
+
+  margin: 15px;
+  // margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 98%;
+
+  .add-user {
+    // background-color: aquamarine;
+    // border: 1px solid rosybrown;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+
+    .picture-upload {
+      padding: 25px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      &-image {
+        margin-top: 25px;
+        margin: auto;
+        justify-content: center;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 1px solid black;
+        margin-bottom: 25px;
+      }
+      button {
+        margin: auto;
+        width: 200px;
+      }
+    }
+
+    .container-2 {
+      width: 100%;
+      padding: 15px;
+      // border: 1px solid rgb(194, 194, 194);
+      // background-color: white;
+
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: auto;
+
+      // align-content: center;
+      .input-field {
+        padding: 25px;
+        border: 1px solid rgb(194, 194, 194);;
+        .name-data {
+          // margin: auto;
+          display: flex;
+          // width: 100%;
+          // border: 1px solid rgb(255, 255, 255);
+          // justify-content: stretch;
+          .name-title {
+            width: 20%;
+            padding-right: 15px;
+          }
+          .first-name {
+            // padding-right: 15px;
+            width: 40%;
+          }
+          .last-name {
+            padding-left: 15px;
+            width: 40%;
+          }
+        }
+
+        .display-name {
+
+          display: flex;
+          flex-direction: column;
+        }
+
+        .radio-button {
+          padding-right: 12px;
+          // color: aqua;
+        }
+
+        .dob-nationality {
+          display: flex;
+          margin-top: 15px;
+          // width: 100%;
+          // flex-direction: row;
+          .dob{
+            padding-right: 15px;
+            width: 50%;
+          }
+          .nationality {
+            width: 50%;
+          }
+
+        }
+
+        .account-info {
+          display: flex;
+          // flex-direction: row;
+          // margin-top: 5px;
+          .role {
+            padding-right: 15px;
+            width: 50%;
+          }
+          .region {
+            width: 50%;
+          }
+        }
+      }
+
+      .form-button {
+        display: flex;
+        justify-content: flex-end;
+        button {
+          background-color: #7CDCFE;
+          margin-top: 15px;
+          margin-left: 15px;
+          width: 150px;
+        }
+      }
+
+    }
+  }
+
+}

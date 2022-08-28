@@ -1,0 +1,42 @@
+.container {
+  margin: 15px;
+  // margin-left: 15px;
+
+  .search-create-user {
+    display: flex;
+    justify-content: space-between;
+
+    .search-user {
+      display: flex;
+      width: 50%;
+      // flex-direction: column;
+
+
+      .select {
+        width: 40px;
+      }
+
+      .search {
+        width: 400px;
+      }
+
+    }
+
+    .create-user {
+      padding: 10px;
+
+      .create-button {
+        height: 50px;
+      }
+
+    }
+  }
+
+  &__table{
+    &__data{
+      width: 100%;
+    }
+    
+  }
+
+}

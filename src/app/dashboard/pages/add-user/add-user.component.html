@@ -1,0 +1,136 @@
+<div class="container">
+
+  <h2>Add User</h2>
+
+  <div class="add-user">
+
+
+
+    <div class="picture-upload">
+      <div class="picture-upload-image">
+
+      </div>
+      <button mat-raised-button>UPLOAD PHOTO</button>
+    </div>
+
+    <div class="container-2">
+      <h3>General Information</h3>
+
+        <form action="" class="create-user-form" [formGroup]="userInfo" (ngSubmit)="display()">
+
+          <div class="input-field">
+            <div class="name-data">
+              <mat-form-field appearance="outline" class="name-title">
+                <mat-label>Name Title</mat-label>
+                <mat-select formControlName="nameTitle" required>
+                  <mat-option value="Mr">Mr</mat-option>
+                  <mat-option value="Mrs">Mrs</mat-option>
+                  <mat-option value="Miss">Miss</mat-option>
+                  <mat-option value="Dr">Dr</mat-option>
+                  <mat-option value="Prof">Prof</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="first-name" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" type="text" matInput required>
+              </mat-form-field>
+
+              <mat-form-field class="last-name" appearance="outline">
+                <mat-label>last Name</mat-label>
+                <input formControlName="lastName" type="text" matInput required>
+              </mat-form-field>
+
+            </div>
+
+            <div class="display-name">
+              <mat-form-field class="display-name" appearance="outline">
+                <mat-label>Display Name</mat-label>
+                <input formControlName="displayName" type="text" matInput>
+              </mat-form-field>
+            </div>
+
+            <div class="radio-button">
+
+              <mat-label>Gender</mat-label> <br> <br>
+              <mat-radio-group class="radio-button" formControlName="gender" required>
+                <mat-radio-button value="m" class="radio-button">Male</mat-radio-button>
+                <mat-radio-button value="f" class="radio-button">Female</mat-radio-button>
+                <mat-radio-button value="other" class="radio-button">Other</mat-radio-button>
+                <mat-radio-button value="none" class="radio-button">Not Specified</mat-radio-button>
+
+              </mat-radio-group>
+            </div>
+
+            <div class="dob-nationality">
+
+              <mat-form-field class="dob" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+              
+              
+              
+
+              <mat-form-field class="nationality" appearance="outline">
+                <mat-label>Nationality</mat-label>
+                <input formControlName="nationality" matInput type="text">
+              </mat-form-field>
+
+            </div>
+
+            <mat-label>Account Information</mat-label> <br> <br>
+
+            <div class="account-info">
+
+              <!-- <div> -->
+                <mat-form-field class="role" appearance="outline" >
+                  <mat-label>Role</mat-label>
+                  <mat-select required formControlName="role">
+                    <mat-option value="Admin">Admin</mat-option>
+                    <mat-option value="User">User</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="region" appearance="outline">
+                  <mat-label>Region</mat-label>
+                  <input formControlName="region" type="text" matInput required>
+                </mat-form-field>
+              <!-- </div> -->
+            </div>
+
+            <div class="account-info contact">
+              <mat-form-field class="role email" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" type="text" matInput required>
+              </mat-form-field>
+              <mat-form-field class="region mobile" appearance="fill">
+                <mat-label>Mobile</mat-label>
+                <input formControlName="mobile" type="text" matInput required>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+
+          <div class="form-button">
+            <button [disabled]="userInfo.invalid" mat-stroked-button type="submit">SAVE</button>
+            <button routerLink="/dash/user" mat-stroked-button>CANCEL</button>
+          </div>
+
+
+          <!-- <br> <br> -->
+
+
+
+
+        </form>
+    </div>
+
+
+  </div>
+
+</div>

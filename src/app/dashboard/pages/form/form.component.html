@@ -3,10 +3,10 @@
   <span class="container__title container__subtitle">Create and manage forms</span>
 
   <div class="container__searchbar">
-    <form action="" class="container__searchbar__searchbox">
+    <form action="" class="container__searchbar__searchbox" [formGroup]="searchText">
       <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
-        <input matInput type="text">
+        <input matInput type="text" formControlName="text" (change)="filterSearch()">
         <mat-icon matPrefix>search</mat-icon>
       </mat-form-field>
     </form>
@@ -18,7 +18,7 @@
   <div class="container__table-data">
 
 
-    <table mat-table [dataSource]="dataSources" class="mat-elevation-z8">
+    <table mat-table [dataSource]="filteredData" class="mat-elevation-z8">
 
       <!-- Position Column -->
       <ng-container matColumnDef="name">

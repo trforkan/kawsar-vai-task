@@ -1,3 +1,5 @@
+import { DataSource } from '@angular/cdk/collections';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -17,9 +19,26 @@ export class FormComponent implements OnInit {
 
   displayedColumns = ['name','created_on'];
 
+  filteredData: any[] = [];
+
+  searchText= new FormGroup({
+    text: new FormControl("")
+  })
+
   constructor() { }
 
   ngOnInit(): void {
+    this.filteredData = this.dataSources;
+  }
+
+  filterSearch() {
+    console.log(this.searchText.value);
+    if(this.searchText.value.text==""){
+      this.filteredData=this.dataSources;
+    }
+    else {
+      this.filteredData = this.dataSources.filter(data => data.name == this.searchText.value.text);
+    }
   }
 
 }

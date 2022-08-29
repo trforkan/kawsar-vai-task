@@ -57,7 +57,7 @@ export class QuesBuilderComponent implements OnInit {
   });
 
 
-  insertQuesType = <FormGroup>this.linearScaleQuestion;
+  insertQuesType = <FormGroup>this.checkboxQuestions;
 
   // checkboxQuestions = new FormArray([
   //   checkboxQuestion
@@ -151,6 +151,12 @@ export class QuesBuilderComponent implements OnInit {
   typeSelect(){
     console.log("show=",this.questionForm.controls['questions'].controls[0].controls['quesType'].value);
 
+  }
+
+  deleteItem(quesNum: number, optionNum: number) {
+    // console.log(event);
+    // this.questionForm.controls['questions'].controls[quesNum].controls['options'].splice
+    <FormArray>this.questionForm.controls['questions'].controls[quesNum].controls['options'].removeAt(optionNum);
   }
 
 }

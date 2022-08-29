@@ -32,4 +32,9 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl(link);
   }
 
+
+  about() {
+    alert("Basic Ques Builder Application");
+  }
+
 }

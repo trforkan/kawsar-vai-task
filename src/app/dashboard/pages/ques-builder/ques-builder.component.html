@@ -19,7 +19,7 @@
 
       </div>
 
-      <div class="title-description questions" formArrayName="questions" *ngFor="let item of questions.controls; index as idx">
+      <div class="title-description questions" formArrayName="questions" *ngFor="let item of questions.controls; index as idx" (click)="showQuesIndex(idx)">
 
 
         <ng-container [formGroupName]="idx">
@@ -37,7 +37,7 @@
 
               <mat-form-field appearance="outline">
                 <mat-label>Question Type</mat-label>
-                <mat-select [(value)]="selected" formControlName="quesType">
+                <mat-select formControlName="quesType" (selectionChange) = "typeSelect()">
                   <mat-option *ngFor="let quesType of quesTypes" [value]="quesType" >
                     {{quesType}}
                   </mat-option>
@@ -46,17 +46,19 @@
 
             </div>
 
-            <div class="answers" formArrayName="options">
 
-              <div class="answer-box" *ngFor="let item of options.controls; index as i">
 
-                <!-- <mat-icon class="answer-line-icon">check_box_outline_blank</mat-icon> -->
-                <mat-form-field class="answer-field">
+            <div class="answers" formArrayName="options" *ngIf="selected=='Checkbox'">
+
+              <div  class="answer-box"  *ngFor="let item of options.controls; index as i">
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
                   <mat-label>Answer</mat-label>
                   <input [formControlName]="i" type="text" matInput>
                 </mat-form-field>
 
               </div>
+
 
               <div class="add-ques-button">
                 <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
@@ -69,10 +71,91 @@
 
             </div>
 
+
+
+
+            <div class="answers" formArrayName="options" *ngIf="selected=='Multiple Choice'">
+
+              <div  class="answer-box"  *ngFor="let item of options.controls; index as i">
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Answer</mat-label>
+                  <input [formControlName]="i" type="text" matInput>
+                </mat-form-field>
+
+              </div>
+
+              <div class="add-ques-button">
+                <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
+              </div>
+
+              <div class="add-option" (click)="addOptions(idx)">
+                <mat-icon class="add-option-line">circle</mat-icon>
+                <span>Add Options</span>
+              </div>
+
+            </div>
+
+
+
+
+            <div class="answers"  *ngIf="selected=='Linear Scale'">
+
+              <div style="display: flex; flex-direction:column;"  fxLayout="column">
+
+                <!-- <mat-icon class="answer-line-icon">check_box_outline_blank</mat-icon> -->
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Description</mat-label>
+                  <input formControlName="description" type="text" matInput>
+                </mat-form-field>
+
+                <div>
+                  <mat-form-field class="range-field">
+                    <mat-select formControlName="rangeStart" >
+                      <mat-option *ngFor="let item of ranges" [value]="item" >{{item}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  to
+                  <mat-form-field class="range-field">
+                    <mat-select formControlName="rangeEnd">
+                      <mat-option *ngFor="let item of ranges" [value]="item">{{item}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Label(Left)</mat-label>
+                  <input formControlName="labelLeft" type="text" matInput>
+                </mat-form-field>
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Label(Right)</mat-label>
+                  <input formControlName="labelRight" type="text" matInput>
+                </mat-form-field>
+
+
+                <div class="add-ques-button">
+                  <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
+                </div>
+
+              </div>
+
+
+
+              <!-- <div class="add-ques-button">
+                <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
+              </div> -->
+
+
+
+            </div>
+
+
+
           </ng-container>
 
         </ng-container>
-
 
 
       </div>

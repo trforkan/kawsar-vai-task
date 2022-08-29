@@ -37,8 +37,8 @@
             list-style: none;
             &__icon {
               margin: auto;
-              width: 38px;;
-              height: 38px;
+              width: 30px;;
+              height: 30px;
               border-radius: 50%;
               display: flex;
               // border: 1px solid black;
@@ -81,7 +81,22 @@
         border-bottom-right-radius: 25px;
         border-top-right-radius: 25px;
 
+        &__box {
+          display: flex;
+          height: 30px;
+          width: 200px;
+          align-items: center;
+          margin-left: 0px;
+          // border: 1px solid black;
+          mat-icon {
+            margin-left: 0px;
+            padding: 0;
+          }
 
+          span {
+            margin-left: 10px;
+          }
+        }
         // background-color: #005BA9;
         // color: white;
 

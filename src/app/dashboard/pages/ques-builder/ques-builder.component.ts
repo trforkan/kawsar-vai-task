@@ -12,6 +12,10 @@ export class QuesBuilderComponent implements OnInit {
 
   selected="Checkbox";
 
+  ranges = [
+    0,20,40,60,80,100
+  ];
+
   quesTypes = [
     "Multiple Choice",
     "Linear Scale",
@@ -28,6 +32,21 @@ export class QuesBuilderComponent implements OnInit {
     ])
   });
 
+  linearScaleQuestion = new FormGroup ({
+    question: new FormControl(""),
+    quesType: new FormControl(""),
+    description: new FormControl(""),
+    rangeStart: new FormControl(""),
+    rangeEnd: new FormControl(""),
+    labelLeft: new FormControl(""),
+    labelRight: new FormControl("")
+  });
+
+  shortTextQuestion = new FormGroup({
+    question: new FormControl(""),
+    answer: new FormControl("")
+  });
+
 
   checkboxQuestions = new FormGroup ({
     question: new FormControl(""),
@@ -36,6 +55,9 @@ export class QuesBuilderComponent implements OnInit {
       new FormControl(""),
     ])
   });
+
+
+  insertQuesType = <FormGroup>this.linearScaleQuestion;
 
   // checkboxQuestions = new FormArray([
   //   checkboxQuestion
@@ -55,13 +77,12 @@ export class QuesBuilderComponent implements OnInit {
     title: new FormControl(""),
     description: new FormControl(""),
     questions: new FormArray([
-      this.checkboxQuestions
+      this.insertQuesType
     ]),
   });
 
 
-
-
+  selectedQuestionIndex = 0;
 
 
   constructor() { }
@@ -71,7 +92,8 @@ export class QuesBuilderComponent implements OnInit {
 
   get options() {
     // return this.checkboxQuestions.controls['options'] as FormArray;
-    return this.questionForm.controls['questions'].controls[0].controls['options'] as FormArray;
+    // console.log(this.selectedQuestionIndex,"get")
+    return this.questionForm.controls['questions'].controls[this.selectedQuestionIndex].controls['options'] as FormArray;
   }
 
   display() {
@@ -88,7 +110,47 @@ export class QuesBuilderComponent implements OnInit {
   }
 
   addQuestions() {
-    this.questionForm.controls['questions'].push(this.checkboxQuestions);
+    (<FormArray>this.questionForm.controls['questions']).push(
+      new FormGroup ({
+        question: new FormControl(""),
+        quesType: new FormControl(""),
+        options: new FormArray([
+          new FormControl(""),
+        ])
+      })
+    );
+  }
+
+  showQuesIndex(event: number){
+    console.log(event);
+    this.selectedQuestionIndex=event;
+    this.selected = <string>this.questionForm.controls['questions'].controls[event].controls['quesType'].value;
+
+    if(this.selected=='Checkbox') {
+      this.insertQuesType=this.checkboxQuestions;
+    }
+
+    if(this.selected=='Multiple Choice') {
+      this.insertQuesType=this.multipleChoiceQuestions;
+    }
+
+    if(this.selected=='Linear Scale') {
+      this.insertQuesType=this.linearScaleQuestion;
+    }
+
+    if(this.selected=='Short Text') {
+      this.insertQuesType=this.shortTextQuestion;
+    }
+
+    console.log(this.insertQuesType.value,this.selected);
+  }
+
+
+
+
+  typeSelect(){
+    console.log("show=",this.questionForm.controls['questions'].controls[0].controls['quesType'].value);
+
   }
 
 }

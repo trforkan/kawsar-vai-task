@@ -10,7 +10,7 @@
         <li class="container__sidenav__header__list__element">
           <div class="container__sidenav__header__list__element__box">
             <h2 class="container__sidenav__header__list__element__box__icon">
-              <b class="container__sidenav__header__list__element__box__icon__bold">S</b>
+              <span class="container__sidenav__header__list__element__box__icon__bold">S</span>
             </h2>
             <span>Systemadmin</span>
             <mat-icon>expand_more</mat-icon>
@@ -25,14 +25,14 @@
       <mat-menu #menu="matMenu">
 
         <button mat-menu-item>
-          <mat-icon>users</mat-icon>
+          <mat-icon>account_circle</mat-icon>
           <span>My Account</span>
         </button>
-        <button mat-menu-item>
-          <mat-icon>voicemail</mat-icon>
+        <button mat-menu-item (click)="about()">
+          <mat-icon>info</mat-icon>
           <span>About</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/login">
           <mat-icon>logout</mat-icon>
           <span>Logout</span>
         </button>
@@ -44,9 +44,19 @@
 
     <mat-button-toggle-group class="container__sidenav__toggle-group">
 
-      <div *ngFor="let item of toggleButtons">
+      <div *ngFor="let item of toggleButtons" >
 
-        <mat-button-toggle class="button-toggle" (change)="routePage(item)" >{{item}}</mat-button-toggle>
+        <!-- <mat-button-toggle class="button-toggle" (change)="routePage(item)"><mat-icon>assignment</mat-icon> {{item}}</mat-button-toggle> -->
+        <mat-button-toggle class="button-toggle" (change)="routePage(item)">
+          <div class="button-toggle__box">
+            <mat-icon *ngIf="item=='Form'">assignment</mat-icon>
+            <mat-icon *ngIf="item=='Response'">assignment_turned_in</mat-icon>
+            <mat-icon *ngIf="item=='User'">account_circle</mat-icon>
+            <mat-icon *ngIf="item=='Map'">map</mat-icon>
+            <span>{{item}}</span>
+          </div>
+        </mat-button-toggle>
+
       </div>
 
     </mat-button-toggle-group>

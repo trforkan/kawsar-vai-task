@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { checkboxQuestion } from './../../../models/model';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -117,7 +118,7 @@ export class QuesBuilderComponent implements OnInit {
   selectedQuestionIndex = 0;
 
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -183,5 +184,6 @@ export class QuesBuilderComponent implements OnInit {
     // this.questionForm.controls['questions'].controls[quesNum].controls['options'].splice
     (this.questionForm.controls['questions'].controls[quesNum].controls['options'] as FormArray).removeAt(optionNum);
   }
+
 
 }

@@ -1,3 +1,8 @@
+// ::ng-deep .mat-select::after {
+//   display: none;
+// }
+
+
 .container {
   margin: 15px;
   // margin-left: 15px;
@@ -14,10 +19,19 @@
 
       .select {
         width: 40px;
+
       }
 
       .search {
         width: 400px;
+
+        .mat-select-after{
+          display: none;
+        }
+
+        .mat-select-arrow {
+          border: none;
+        }
       }
 
     }
@@ -36,7 +50,7 @@
     &__data{
       width: 100%;
     }
-    
+
   }
 
 }

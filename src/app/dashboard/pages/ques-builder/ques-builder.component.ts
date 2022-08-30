@@ -72,14 +72,46 @@ export class QuesBuilderComponent implements OnInit {
   //   ]),
   // });
 
+  everyQuesType = new FormGroup({
+
+    question: new FormControl(""),
+    answer: new FormControl(""),
+    quesType: new FormControl(""),
+    description: new FormControl(""),
+    rangeStart: new FormControl(""),
+    rangeEnd: new FormControl(""),
+    labelLeft: new FormControl(""),
+    labelRight: new FormControl(""),
+    options: new FormArray([
+      new FormControl(""),
+    ])
+
+  });
+
 
   questionForm = new FormGroup({
     title: new FormControl(""),
-    description: new FormControl(""),
+    formDescription: new FormControl(""),
     questions: new FormArray([
-      this.insertQuesType
+      new FormGroup({
+
+        question: new FormControl(""),
+        answer: new FormControl(""),
+        quesType: new FormControl(""),
+        description: new FormControl(""),
+        rangeStart: new FormControl(""),
+        rangeEnd: new FormControl(""),
+        labelLeft: new FormControl(""),
+        labelRight: new FormControl(""),
+        options: new FormArray([
+          new FormControl(""),
+        ])
+
+      })
     ]),
   });
+
+
 
 
   selectedQuestionIndex = 0;
@@ -111,14 +143,24 @@ export class QuesBuilderComponent implements OnInit {
 
   addQuestions() {
     (<FormArray>this.questionForm.controls['questions']).push(
-      new FormGroup ({
+      // this.everyQuesType
+      new FormGroup({
+
         question: new FormControl(""),
+        answer: new FormControl(""),
         quesType: new FormControl(""),
+        description: new FormControl(""),
+        rangeStart: new FormControl(""),
+        rangeEnd: new FormControl(""),
+        labelLeft: new FormControl(""),
+        labelRight: new FormControl(""),
         options: new FormArray([
           new FormControl(""),
         ])
+
       })
     );
+    // this.selected= 'Checkbox';
   }
 
   showQuesIndex(event: number){
@@ -126,23 +168,6 @@ export class QuesBuilderComponent implements OnInit {
     this.selectedQuestionIndex=event;
     this.selected = <string>this.questionForm.controls['questions'].controls[event].controls['quesType'].value;
 
-    if(this.selected=='Checkbox') {
-      this.insertQuesType=this.checkboxQuestions;
-    }
-
-    if(this.selected=='Multiple Choice') {
-      this.insertQuesType=this.multipleChoiceQuestions;
-    }
-
-    if(this.selected=='Linear Scale') {
-      this.insertQuesType=this.linearScaleQuestion;
-    }
-
-    if(this.selected=='Short Text') {
-      this.insertQuesType=this.shortTextQuestion;
-    }
-
-    console.log(this.insertQuesType.value,this.selected);
   }
 
 
@@ -150,13 +175,13 @@ export class QuesBuilderComponent implements OnInit {
 
   typeSelect(){
     console.log("show=",this.questionForm.controls['questions'].controls[0].controls['quesType'].value);
-
+    this.selected = (this.questionForm.controls['questions'].controls[0].controls['quesType'].value) as string ;
   }
 
   deleteItem(quesNum: number, optionNum: number) {
     // console.log(event);
     // this.questionForm.controls['questions'].controls[quesNum].controls['options'].splice
-    <FormArray>this.questionForm.controls['questions'].controls[quesNum].controls['options'].removeAt(optionNum);
+    (this.questionForm.controls['questions'].controls[quesNum].controls['options'] as FormArray).removeAt(optionNum);
   }
 
 }

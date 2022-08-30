@@ -13,8 +13,8 @@
         </mat-form-field>
 
         <mat-form-field appearance="legacy">
-          <mat-label>Description</mat-label>
-          <input formControlName="description" type="text" matInput>
+          <mat-label>Form Description</mat-label>
+          <input formControlName="formDescription" type="text" matInput>
         </mat-form-field>
 
       </div>
@@ -48,7 +48,7 @@
 
 
 
-            <div class="answers" formArrayName="options" *ngIf="selected=='Checkbox'">
+            <div class="answers" formArrayName="options" *ngIf="selected=='Checkbox'" >
 
               <div  class="answer-box"  *ngFor="let item of options.controls; index as i">
 
@@ -62,10 +62,6 @@
               </div>
 
 
-              <div class="add-ques-button">
-                <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
-              </div>
-
               <div class="add-option" (click)="addOptions(idx)">
                 <mat-icon class="add-option-line">check_box_outline_blank</mat-icon>
                 <span>Add Options</span>
@@ -74,8 +70,94 @@
             </div>
 
 
+            <div class="answers" formArrayName="options" *ngIf="selected=='Multiple Choice'" >
+
+              <div  class="answer-box"  *ngFor="let item of options.controls; index as i">
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Answer</mat-label>
+                  <input [formControlName]="i" type="text" matInput>
+                </mat-form-field>
+
+                <mat-icon (click)="deleteItem(idx,i)" *ngIf="i>0" >close</mat-icon>
+
+              </div>
+
+
+              <div class="add-option" (click)="addOptions(idx)">
+                <mat-icon class="add-option-line">radio_button_unchecked</mat-icon>
+                <span>Add Options</span>
+              </div>
+
+            </div>
+
+            <div class="answers" *ngIf="selected == 'Linear Scale'">
+
+              <div  class="answer-box" >
+
+                <mat-form-field class="answer-field" style="width:100%" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Description</mat-label>
+                  <input formControlName="description" type="text" matInput>
+                </mat-form-field>
+
+                <!-- <mat-icon (click)="deleteItem(idx,i)" >close</mat-icon> -->
+
+              </div>
+
+              <div class="range-box">
+
+                <mat-form-field>
+                  <mat-select formControlName="rangeStart">
+                    <mat-option *ngFor="let range of ranges" [value]="range">{{range}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span>to</span>
+                <mat-form-field>
+                  <mat-select formControlName="rangeEnd">
+                    <mat-option *ngFor="let range of ranges" [value]="range">{{range}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div  class="label-box">
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Label (Left)</mat-label>
+                  <input formControlName="labelLeft" type="text" matInput>
+                </mat-form-field>
+
+                <mat-form-field class="answer-field" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Label (Right)</mat-label>
+                  <input formControlName="labelRight" type="text" matInput>
+                </mat-form-field>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="answers" *ngIf="selected == 'Short Text'">
+
+              <div  class="answer-box" >
+
+                <mat-form-field class="answer-field" style="width:100%" *ngIf="idx==selectedQuestionIndex">
+                  <mat-label>Short Answer Text</mat-label>
+                  <input formControlName="answer" type="text" matInput [readonly]="true">
+                </mat-form-field>
+                <!-- <mat-icon (click)="deleteItem(idx,i)" >close</mat-icon> -->
+
+              </div>
+
+            </div>
+
 
           </ng-container>
+
+          <div class="add-ques-button">
+            <button (click)="addQuestions()" mat-icon-button><mat-icon>add_circle</mat-icon></button>
+          </div>
 
         </ng-container>
 
@@ -83,7 +165,12 @@
       </div>
 
 
-      <button mat-icon-button type="submit">+</button>
+      <!-- <button mat-icon-button type="submit">+</button> -->
+
+      <div class="action-buttons">
+        <button mat-button routerLink="dashboard/form">Discard</button>
+        <button class="save-button" type="submit" mat-raised-button>Save Form</button>
+      </div>
 
     </form>
 

@@ -27,6 +27,15 @@
       }
 
       .questions {
+        .add-ques-button {
+          // border: 1px solid black;
+          background-color: white;
+          color: #005BA9;
+          position: absolute;
+          left: 85%;
+          top: 225px;
+
+        }
 
         border-left: 3px solid #FEC44D;
         .question {
@@ -62,14 +71,20 @@
               margin-left: 50px;
             }
           }
-
-          .add-ques-button {
-            border: 1px solid black;
-            position: absolute;
-            left: 85%;
-            top: 40%;
+          .range-box {
+            display: flex;
+            align-items: center;
 
           }
+
+          .label-box {
+            display: flex;
+            flex-direction: column;
+            mat-form-field{
+              width: 60%;
+            }
+          }
+
 
           .add-option {
             display: flex;
@@ -86,6 +101,19 @@
             }
           }
 
+        }
+      }
+
+      .action-buttons {
+        margin-top: 16px;
+        margin-left: 16%;
+        margin-right: 16%;
+        display: flex;
+        justify-content: space-between;
+
+        .save-button {
+          background-color: #005BA9;
+          color: white;
         }
       }
 

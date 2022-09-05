@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class QuesBuilderComponent implements OnInit {
 
 
-  selected="Checkbox";
+  selected: any[]=["Checkbox"];
 
   ranges = [
     0,20,40,60,80,100
@@ -167,16 +167,16 @@ export class QuesBuilderComponent implements OnInit {
   showQuesIndex(event: number){
     console.log(event);
     this.selectedQuestionIndex=event;
-    this.selected = <string>this.questionForm.controls['questions'].controls[event].controls['quesType'].value;
+    this.selected[event] = <string>this.questionForm.controls['questions'].controls[event].controls['quesType'].value;
 
   }
 
 
 
 
-  typeSelect(){
+  typeSelect(index:number){
     console.log("show=",this.questionForm.controls['questions'].controls[0].controls['quesType'].value);
-    this.selected = (this.questionForm.controls['questions'].controls[0].controls['quesType'].value) as string ;
+    this.selected[index] = (this.questionForm.controls['questions'].controls[0].controls['quesType'].value) as string ;
   }
 
   deleteItem(quesNum: number, optionNum: number) {

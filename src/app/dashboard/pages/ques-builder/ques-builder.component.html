@@ -37,7 +37,7 @@
 
               <mat-form-field appearance="outline">
                 <mat-label>Question Type</mat-label>
-                <mat-select formControlName="quesType" (selectionChange) = "typeSelect()">
+                <mat-select formControlName="quesType" (selectionChange) = "typeSelect(idx)">
                   <mat-option *ngFor="let quesType of quesTypes" [value]="quesType" >
                     {{quesType}}
                   </mat-option>
@@ -48,7 +48,7 @@
 
 
 
-            <div class="answers" formArrayName="options" *ngIf="selected=='Checkbox'" >
+            <div class="answers" formArrayName="options" *ngIf="selected[idx]=='Checkbox'" >
 
               <div  class="answer-box"  *ngFor="let item of options.controls; index as i">
 
@@ -70,7 +70,7 @@
             </div>
 
 
-            <div class="answers" formArrayName="options" *ngIf="selected=='Multiple Choice'" >
+            <div class="answers" formArrayName="options" *ngIf="selected[idx]=='Multiple Choice'" >
 
               <div  class="answer-box"  *ngFor="let item of options.controls; index as i">
 
@@ -91,7 +91,7 @@
 
             </div>
 
-            <div class="answers" *ngIf="selected == 'Linear Scale'">
+            <div class="answers" *ngIf="selected[idx] == 'Linear Scale'">
 
               <div  class="answer-box" >
 
@@ -138,7 +138,7 @@
 
 
 
-            <div class="answers" *ngIf="selected == 'Short Text'">
+            <div class="answers" *ngIf="selected[idx] == 'Short Text'">
 
               <div  class="answer-box" >
 
